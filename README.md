@@ -70,4 +70,4 @@ drkaos-wp-theme/
 
 ## Licenza
 
-Codice sotto [GPL v3 o successiva](LICENSE). Nome, logo e immagini DR.KAOS sono marchi del proprietario e non rientrano nella licenza del codice.
+Codice sotto [GPL v3 o successiva](LICENSE). Nome, logo e immagini DR.KAOS sono marchi del proprietario e non rientrano nella licenza del codice: vedi [NOTICE.md](NOTICE.md).
