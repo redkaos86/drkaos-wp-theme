@@ -1,0 +1,26 @@
+/* DR.KAOS WP THEME - pulsante Manutenzione nella barra admin */
+#wpadminbar #wp-admin-bar-drkaos-maint > .ab-item { display: flex; align-items: center; gap: 8px; }
+#wpadminbar .dkm-ab { display: inline-flex; align-items: center; gap: 8px; }
+#wpadminbar .dkm-ab__label { font-weight: 600; }
+#wpadminbar .dkm-ab__state {
+	min-width: 28px; padding: 1px 7px; border-radius: 999px; font-size: 10px; font-weight: 800; line-height: 16px; text-align: center; letter-spacing: .06em;
+	background: rgba(255, 255, 255, .14); color: #c7dcdc;
+}
+#wpadminbar .dkm-ab__switch {
+	position: relative; width: 34px; height: 18px; border-radius: 999px; background: #55666e; transition: background .2s; flex: 0 0 34px;
+}
+#wpadminbar .dkm-ab__switch i {
+	position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff; transition: transform .2s; box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+}
+/* ON = sito in manutenzione: ambra ben visibile */
+#wpadminbar .drkaos-maint.is-on > .ab-item { background: rgba(255, 176, 32, .14); }
+#wpadminbar .drkaos-maint.is-on .dkm-ab__state { background: #ffb020; color: #3a2600; }
+#wpadminbar .drkaos-maint.is-on .dkm-ab__label { color: #ffd37a; }
+#wpadminbar .drkaos-maint.is-on .dkm-ab__switch { background: #ffb020; }
+#wpadminbar .drkaos-maint.is-on .dkm-ab__switch i { transform: translateX(16px); }
+#wpadminbar .drkaos-maint.is-busy { opacity: .6; pointer-events: none; }
+#wpadminbar #wp-admin-bar-drkaos-maint .ab-sub-wrapper .ab-item { min-width: 190px; }
+@media screen and (max-width: 782px) {
+	#wpadminbar #wp-admin-bar-drkaos-maint { display: block; }
+	#wpadminbar .dkm-ab__label { display: none; }
+}

@@ -1,0 +1,47 @@
+/* DR.KAOS WP THEME - cursore personalizzato */
+.dk-cursor {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 2147483647;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity .25s ease;
+	will-change: transform;
+}
+.dk-cursor.is-ready { opacity: 1; }
+.dk-cursor.is-hidden { opacity: 0 !important; }
+.dk-cursor--invert { mix-blend-mode: difference; }
+
+.dk-cursor__inner {
+	position: absolute;
+	display: block;
+	left: calc(var(--dk-w) / -2);
+	top: calc(var(--dk-h) / -2);
+	width: var(--dk-w);
+	height: var(--dk-h);
+	color: var(--dk-color);
+	transform-origin: 50% 50%;
+	transform: scale(calc(var(--dk-s, 1) * var(--dk-d, 1)));
+	transition: transform .3s cubic-bezier(.2, .8, .2, 1);
+	will-change: transform;
+}
+.dk-cursor.is-topleft .dk-cursor__inner { left: 0; top: 0; transform-origin: 0 0; }
+.dk-cursor.is-down { --dk-d: .8; }
+
+.dk-cursor--dot .dk-cursor__inner { border-radius: 50%; background: var(--dk-color); }
+.dk-cursor--ring .dk-cursor__inner { border-radius: 50%; border: 2px solid var(--dk-color); box-sizing: border-box; }
+.dk-cursor__inner svg, .dk-cursor__inner img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.dk-cursor__inner svg { overflow: visible; }
+
+/* Nasconde il cursore di sistema solo se lo script è partito (mai su touch) */
+html.dk-cursor-on.dk-hide-native, html.dk-cursor-on.dk-hide-native * { cursor: none !important; }
+html.dk-cursor-on.dk-hide-native input, html.dk-cursor-on.dk-hide-native textarea,
+html.dk-cursor-on.dk-hide-native select, html.dk-cursor-on.dk-hide-native [contenteditable="true"] { cursor: auto !important; }
+html.dk-cursor-on.dk-hide-native input[type="text"], html.dk-cursor-on.dk-hide-native input[type="email"],
+html.dk-cursor-on.dk-hide-native input[type="search"], html.dk-cursor-on.dk-hide-native input[type="password"],
+html.dk-cursor-on.dk-hide-native input[type="tel"], html.dk-cursor-on.dk-hide-native input[type="url"],
+html.dk-cursor-on.dk-hide-native input[type="number"], html.dk-cursor-on.dk-hide-native textarea { cursor: text !important; }
+
+@media (hover: none), (pointer: coarse) { .dk-cursor { display: none !important; } }
+@media print { .dk-cursor { display: none !important; } }

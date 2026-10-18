@@ -1,0 +1,14 @@
+# Pacchetti generati
+*.zip
+
+# Sistema e editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+
+# Log e dipendenze locali
+*.log
+node_modules/

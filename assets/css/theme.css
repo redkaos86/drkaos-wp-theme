@@ -1,0 +1,98 @@
+/* DR.KAOS WP THEME - reset minimale (stesso approccio di Hello: non interferisce con Elementor) */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { line-height: 1.15; -webkit-text-size-adjust: 100%; }
+body { margin: 0; }
+main { display: block; }
+h1, h2, h3, h4, h5, h6 { margin-block: 0.5em 1rem; font-weight: 500; line-height: 1.2; }
+p { margin-block: 0 0.9rem; }
+a { background-color: transparent; text-decoration: none; }
+img { border-style: none; height: auto; max-width: 100%; }
+button, input, optgroup, select, textarea { font-family: inherit; font-size: 100%; line-height: 1.15; margin: 0; }
+[hidden] { display: none; }
+
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	width: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	word-wrap: normal !important;
+}
+.screen-reader-text:focus {
+	background: #f1f1f1;
+	clip: auto !important;
+	clip-path: none;
+	color: #21759b;
+	display: block;
+	font-size: 0.875rem;
+	height: auto;
+	left: 5px;
+	padding: 15px 23px 14px;
+	top: 5px;
+	width: auto;
+	z-index: 100000;
+}
+
+/* Allineamenti core WP */
+.alignleft { float: left; margin-inline-end: 1rem; }
+.alignright { float: right; margin-inline-start: 1rem; }
+.aligncenter { display: block; margin-inline: auto; }
+.wp-caption { max-width: 100%; }
+.wp-caption-text, .gallery-caption { font-size: 0.875em; }
+/* DR.KAOS WP THEME - layout base. Tutto il design va costruito con Elementor. */
+:root {
+	--drkaos-content-width: 1140px;
+}
+
+.site-header,
+.site-footer,
+.site-main > .page-header,
+.site-main > .page-content,
+.site-main > .site-404,
+.site-main > article > .page-header,
+.site-main > article > .page-content,
+.site-main > article > .entry-footer,
+.site-main > article > .comments-area {
+	max-width: var(--drkaos-content-width);
+	margin-inline: auto;
+	padding-inline: 20px;
+	width: 100%;
+}
+
+body { color: var(--drkaos-text, #1d2b33); }
+a { color: var(--drkaos-accent, #00e0b5); }
+a:hover { filter: brightness(.85); }
+.site-header, .site-footer { background: var(--drkaos-dark, #02121a); color: #fff; max-width: none; }
+.site-header a, .site-footer a { color: #fff; }
+.site-header a:hover, .site-footer a:hover { color: var(--drkaos-accent, #00e0b5); filter: none; }
+.site-header, .site-footer { padding-inline: max(20px, calc((100% - var(--drkaos-content-width)) / 2)); }
+.site-title { margin: 0; font-weight: 700; letter-spacing: .04em; }
+.site-description { margin: 0; opacity: .7; font-size: .875rem; }
+
+.site-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding-block: 1rem; }
+.site-footer { padding-block: 2rem; }
+.site-header .menu,
+.site-footer .menu { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 1rem; }
+
+/* Pagine costruite con Elementor: nessun padding extra, full width */
+.elementor-page .site-main > article > .page-content,
+.elementor-page .site-main > article > .page-header { max-width: none; padding-inline: 0; }
+.elementor-page .site-main > article > .page-content > * { margin-block-end: 0; }
+
+/* Elementor Canvas / Full Width: nessun vincolo */
+.elementor-template-canvas .site-main,
+.elementor-template-full-width .site-main { max-width: none; }
+
+.post-thumbnail img { display: block; }
+.page-links, .post-tags { margin-block: 1rem; }
+.search-form { display: flex; gap: 0.5rem; }
+.search-form label { flex: 1; }
+.search-field { width: 100%; }
+.comment-list { list-style: none; padding: 0; }
+.comment-list .children { list-style: none; }

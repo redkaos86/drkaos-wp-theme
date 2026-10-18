@@ -1,0 +1,89 @@
+/* DR.KAOS WP THEME - pagina di manutenzione (sito pubblico e anteprima nell'editor) */
+body.dkm-page { margin: 0; background: #02121a; }
+
+.dkm {
+	position: fixed;
+	inset: 0;
+	container-type: size;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow-x: hidden;
+	overflow-y: auto;
+	text-align: center;
+	color: #fff;
+	background: #02121a;
+	-webkit-font-smoothing: antialiased;
+}
+.dkm *, .dkm *::before, .dkm *::after { box-sizing: border-box; }
+.dkm__bg { position: absolute; inset: 0; background: var(--dkm-bg) center / cover no-repeat; }
+.dkm__overlay { position: absolute; inset: 0; background: rgba(2, 18, 26, var(--dkm-overlay, .55)); }
+
+.dkm__content {
+	position: relative;
+	z-index: 2;
+	width: 100%;
+	max-width: 920px;
+	margin: auto;
+	padding: 40px 24px 90px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	animation: dkm-in .9s cubic-bezier(.2, .8, .2, 1) both;
+}
+.dkm__logo { display: block; width: calc(var(--dkm-logo-n, 280) * 1px); max-width: 72%; height: auto; margin: 0 auto 28px; }
+
+.dkm__title {
+	margin: 0 0 16px;
+	padding: 0;
+	font-family: var(--dkm-title-font);
+	font-weight: var(--dkm-title-weight);
+	color: var(--dkm-title-color);
+	line-height: 1.12;
+	letter-spacing: .01em;
+	font-size: calc(var(--dkm-title-n) * 1px);
+	font-size: clamp(calc(var(--dkm-title-n) * .55px), calc(var(--dkm-title-n) / 16 * 1vw), calc(var(--dkm-title-n) * 1px));
+	font-size: clamp(calc(var(--dkm-title-n) * .55px), calc(var(--dkm-title-n) / 16 * 1cqw), calc(var(--dkm-title-n) * 1px));
+}
+.dkm__title:empty { display: none; }
+
+.dkm__text {
+	font-family: var(--dkm-text-font);
+	font-weight: var(--dkm-text-weight);
+	color: var(--dkm-text-color);
+	line-height: 1.55;
+	max-width: 720px;
+	font-size: calc(var(--dkm-text-n) * 1px);
+	font-size: clamp(calc(var(--dkm-text-n) * .7px), calc(var(--dkm-text-n) / 16 * 1vw), calc(var(--dkm-text-n) * 1px));
+	font-size: clamp(calc(var(--dkm-text-n) * .7px), calc(var(--dkm-text-n) / 16 * 1cqw), calc(var(--dkm-text-n) * 1px));
+}
+.dkm__text p { margin: 0 0 .6em; }
+.dkm__text a, .dkm__bar a { color: inherit; text-decoration: underline; }
+
+.dkm__bar {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 3;
+	padding: 16px 24px;
+	text-align: center;
+	font-family: var(--dkm-bar-font);
+	color: var(--dkm-bar-color);
+	background: rgba(0, 0, 0, var(--dkm-bar-op, .3));
+	-webkit-backdrop-filter: blur(6px);
+	backdrop-filter: blur(6px);
+	line-height: 1.5;
+	font-size: calc(var(--dkm-bar-n) * 1px);
+	font-size: clamp(calc(var(--dkm-bar-n) * .8px), calc(var(--dkm-bar-n) / 16 * 1vw + 6px), calc(var(--dkm-bar-n) * 1px));
+}
+.dkm__bar:empty, .dkm__bar[hidden] { display: none; }
+
+@keyframes dkm-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .dkm__content { animation: none; } }
+
+/* Anteprima nell'editor: stessa pagina, rimpicciolita */
+.dkm--preview { position: absolute; width: 1280px; height: 720px; inset: 0 auto auto 0; }
+.dkm--preview { overflow: hidden; }
+.dkm--preview .dkm__content { animation: none; }
+.dkm--preview .dkm__bar { position: absolute; }

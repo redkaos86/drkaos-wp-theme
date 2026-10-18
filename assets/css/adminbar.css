@@ -1,0 +1,23 @@
+/* DR.KAOS WP THEME - barra admin (sia nella dashboard sia sul sito) */
+#wpadminbar { background: #0a1a20; border-bottom: 1px solid rgba(255, 255, 255, .08); }
+#wpadminbar .ab-item, #wpadminbar a.ab-item, #wpadminbar > #wp-toolbar span.ab-label,
+#wpadminbar > #wp-toolbar span.noticon { color: #e6f2ef; }
+#wpadminbar .ab-icon:before, #wpadminbar .ab-item:before, #wpadminbar #adminbarsearch:before { color: #8fa8a8; }
+#wpadminbar .ab-top-menu > li:hover > .ab-item,
+#wpadminbar .ab-top-menu > li.hover > .ab-item,
+#wpadminbar .ab-top-menu > li > .ab-item:focus,
+#wpadminbar.nojq .quicklinks .ab-top-menu > li > .ab-item:focus {
+	background: #163541; color: #00e0b5;
+}
+#wpadminbar li:hover .ab-icon:before, #wpadminbar li:hover .ab-item:before,
+#wpadminbar li.hover .ab-icon:before { color: #00e0b5; }
+#wpadminbar .menupop .ab-sub-wrapper, #wpadminbar .shortlink-input { background: #10262f; border-radius: 0 0 14px 14px; box-shadow: 0 12px 30px rgba(0, 0, 0, .4); }
+#wpadminbar .quicklinks .menupop ul li a, #wpadminbar .quicklinks .menupop ul li .ab-item { color: #e6f2ef; }
+#wpadminbar .quicklinks .menupop ul li a:hover, #wpadminbar .quicklinks .menupop ul li a:focus,
+#wpadminbar .quicklinks .ab-sub-wrapper .menupop.hover > a { color: #00e0b5; background: transparent; }
+#wpadminbar .ab-submenu .ab-item { color: #e6f2ef; }
+#wpadminbar #wp-admin-bar-my-account.with-avatar #wp-admin-bar-user-actions > li { margin-left: 16px; }
+#wpadminbar #adminbarsearch .adminbar-input { background: #163541; color: #fff; border-radius: 999px; }
+#wpadminbar .ab-top-menu > li.menupop.hover > .ab-item,
+#wpadminbar .menupop.hover > .ab-item { background: #163541; color: #00e0b5; }
+#wpadminbar .ab-label .awaiting-mod, #wpadminbar #wp-admin-bar-comments .ab-icon + .ab-label .count { background: #00e0b5; color: #02121a; }

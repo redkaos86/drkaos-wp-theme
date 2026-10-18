@@ -1,0 +1,17 @@
+/*
+Theme Name: DR.KAOS WP THEME
+Theme URI: https://drkaos.it
+Author: DR.KAOS
+Author URI: https://drkaos.it
+Description: Tema WordPress leggero e completamente vuoto, progettato per Elementor e per la massima compatibilità con i plugin (WooCommerce, Yoast, Rank Math, WPML, Polylang, ecc.). Nessuno stile superfluo: il design si costruisce con Elementor.
+Version: 2.0.0
+Requires at least: 5.9
+Tested up to: 6.7
+Requires PHP: 7.4
+License: GNU General Public License v3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Text Domain: drkaos-wp-theme
+Tags: custom-menu, custom-logo, featured-images, translation-ready, threaded-comments, full-width-template, wide-blocks, accessibility-ready, one-column, two-columns
+*/
+
+/* Il tema è volutamente privo di stili: vedi assets/css/reset.css e assets/css/theme.css */
