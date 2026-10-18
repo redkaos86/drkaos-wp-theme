@@ -29,6 +29,7 @@ Tema WordPress **vuoto e leggero**, pensato per [Elementor](https://elementor.co
 | **Indirizzo di accesso personalizzato** (`/dklogin`) | Personalizza → *Indirizzo di accesso* |
 | **Cursore personalizzato** (pallina, anello, icone, logo, ingrandimento, effetto negativo) | Personalizza → *Cursore personalizzato* |
 | **Modalità manutenzione** con interruttore nella barra admin e pagina personalizzabile | Barra admin → *Manutenzione* / Aspetto → *Manutenzione* |
+| **Favicon del sito** (scelta diretta, senza ritaglio) | Personalizza → *Brand DR.KAOS* |
 | **Popup nella Bacheca** per invitare a scaricare KaosSlider | Personalizza → *Brand DR.KAOS* |
 
 ## Configurazione avanzata

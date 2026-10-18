@@ -70,6 +70,25 @@ function drkaos_customize_register( $wp_customize ) {
 			'type'        => 'text',
 		)
 	);
+
+	$wp_customize->add_setting(
+		'drkaos_favicon',
+		array(
+			'default'           => '',
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'drkaos_favicon',
+			array(
+				'label'       => esc_html__( 'Favicon del sito', 'drkaos-wp-theme' ),
+				'description' => esc_html__( 'Immagine quadrata (PNG, SVG o ICO), meglio 512×512. Ha la precedenza sull’icona del sito di WordPress, senza passaggio di ritaglio. Se la lasci vuota si usa l’icona del sito di WordPress, oppure quella del tema.', 'drkaos-wp-theme' ),
+				'section'     => 'drkaos_brand',
+			)
+		)
+	);
 }
 add_action( 'customize_register', 'drkaos_customize_register' );
 
@@ -87,17 +106,52 @@ function drkaos_print_color_vars() {
 add_action( 'wp_enqueue_scripts', 'drkaos_print_color_vars', 20 );
 
 /**
- * Favicon di default se non è impostata l'icona del sito.
+ * Indirizzo della favicon in uso. Priorità: favicon scelta nel Customizer del tema,
+ * icona del sito di WordPress, icona di default del tema.
+ *
+ * @return string
  */
-function drkaos_default_favicon() {
-	if ( has_site_icon() || is_customize_preview() ) {
+function drkaos_favicon_url() {
+	$custom = get_theme_mod( 'drkaos_favicon', '' );
+	if ( $custom ) {
+		return $custom;
+	}
+	if ( has_site_icon() ) {
+		return get_site_icon_url( 64 );
+	}
+	return DRKAOS_THEME_URL . '/assets/img/favicon.png';
+}
+
+/**
+ * Stampa la favicon. Se non c'è né quella del tema né l'icona del sito di WordPress,
+ * usa quella di default (l'icona del sito di WordPress la stampa WordPress stesso).
+ */
+function drkaos_print_favicon() {
+	$custom = get_theme_mod( 'drkaos_favicon', '' );
+
+	if ( ! $custom && has_site_icon() ) {
 		return;
 	}
-	echo '<link rel="icon" href="' . esc_url( DRKAOS_THEME_URL . '/assets/img/favicon.png' ) . '" type="image/png">' . "\n";
+
+	$url  = drkaos_favicon_url();
+	$type = wp_check_filetype( wp_parse_url( $url, PHP_URL_PATH ) );
+	echo '<link rel="icon" href="' . esc_url( $url ) . '"' . ( ! empty( $type['type'] ) ? ' type="' . esc_attr( $type['type'] ) . '"' : '' ) . '>' . "\n";
 }
-add_action( 'wp_head', 'drkaos_default_favicon', 5 );
-add_action( 'login_head', 'drkaos_default_favicon', 5 );
-add_action( 'admin_head', 'drkaos_default_favicon', 5 );
+add_action( 'wp_head', 'drkaos_print_favicon', 5 );
+add_action( 'login_head', 'drkaos_print_favicon', 5 );
+add_action( 'admin_head', 'drkaos_print_favicon', 5 );
+
+/**
+ * Con una favicon scelta nel tema, WordPress non deve stampare anche la sua (evita due icone in conflitto).
+ */
+function drkaos_favicon_override() {
+	if ( get_theme_mod( 'drkaos_favicon', '' ) ) {
+		foreach ( array( 'wp_head', 'login_head', 'admin_head' ) as $hook ) {
+			remove_action( $hook, 'wp_site_icon', 99 );
+		}
+	}
+}
+add_action( 'init', 'drkaos_favicon_override' );
 
 /**
  * Pagina di login brandizzata.

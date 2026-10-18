@@ -292,11 +292,7 @@ function drkaos_maint_maybe_render() {
 		<link rel="stylesheet" href="<?php echo esc_url( $fonts_url ); ?>">
 	<?php endif; ?>
 	<link rel="stylesheet" href="<?php echo esc_url( $css_url ); ?>">
-	<?php if ( has_site_icon() ) : ?>
-		<link rel="icon" href="<?php echo esc_url( get_site_icon_url( 64 ) ); ?>">
-	<?php else : ?>
-		<link rel="icon" href="<?php echo esc_url( DRKAOS_THEME_URL . '/assets/img/favicon.png' ); ?>" type="image/png">
-	<?php endif; ?>
+	<link rel="icon" href="<?php echo esc_url( drkaos_favicon_url() ); ?>">
 </head>
 <body class="dkm-page">
 	<?php echo drkaos_maint_markup( $o ); // phpcs:ignore WordPress.Security.EscapeOutput ?>

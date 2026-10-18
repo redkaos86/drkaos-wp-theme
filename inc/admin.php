@@ -20,6 +20,10 @@ function drkaos_admin_style_enabled() {
 	if ( defined( 'DRKAOS_DISABLE_ADMIN_STYLE' ) && DRKAOS_DISABLE_ADMIN_STYLE ) {
 		return false;
 	}
+	// L'editor di Elementor ha la sua interfaccia: non ci applichiamo lo stile della dashboard.
+	if ( ( isset( $_GET['action'] ) && 'elementor' === $_GET['action'] ) || isset( $_GET['elementor-preview'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
+		return false;
+	}
 	return (bool) apply_filters( 'drkaos_admin_style', true );
 }
 
