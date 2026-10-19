@@ -204,6 +204,30 @@ function drkaos_login_remove_default_redirects() {
 add_action( 'init', 'drkaos_login_remove_default_redirects' );
 
 /**
+ * Avviso agli amministratori: con i permalink su "Semplice" l'indirizzo personalizzato resta spento.
+ */
+function drkaos_login_permalink_notice() {
+	if ( ! current_user_can( 'manage_options' ) || ! get_theme_mod( 'drkaos_login_enable', true ) || get_option( 'permalink_structure' ) ) {
+		return;
+	}
+
+	$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+	if ( ! $screen || ! in_array( $screen->id, array( 'dashboard', 'themes', 'options-permalink' ), true ) ) {
+		return;
+	}
+
+	printf(
+		'<div class="notice notice-warning"><p><strong>%1$s</strong> %2$s <a href="%3$s">%4$s</a></p></div>',
+		esc_html__( 'Indirizzo di accesso personalizzato non attivo.', 'drkaos-wp-theme' ),
+		/* translators: %s: indirizzo di accesso, es. /dklogin */
+		esc_html( sprintf( __( 'I permalink sono impostati su "Semplice", quindi %s non funziona e il login resta su wp-login.php. Scegli un’altra struttura (ad esempio "Nome articolo") e salva.', 'drkaos-wp-theme' ), '/' . drkaos_login_slug() ) ),
+		esc_url( admin_url( 'options-permalink.php' ) ),
+		esc_html__( 'Vai a Impostazioni → Permalink', 'drkaos-wp-theme' )
+	);
+}
+add_action( 'admin_notices', 'drkaos_login_permalink_notice' );
+
+/**
  * Customizer: attivazione e indirizzo.
  *
  * @param WP_Customize_Manager $wp_customize Customizer.

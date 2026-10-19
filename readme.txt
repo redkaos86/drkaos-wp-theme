@@ -17,6 +17,9 @@ Nessun stile imposto, nessuna dipendenza. Supporta le Theme Locations di Element
 3. Installa Elementor e costruisci header, footer e pagine.
 
 == Changelog ==
+= 2.0.2 =
+* Avviso nella Bacheca quando l'indirizzo di accesso personalizzato non può attivarsi perché i permalink sono su "Semplice".
+
 = 2.0.1 =
 * Favicon scelta direttamente dal Customizer del tema (Brand DR.KAOS), senza ritaglio; ha la precedenza sull'icona del sito di WordPress.
 * Lo stile della dashboard non viene più applicato dentro l'editor di Elementor.
