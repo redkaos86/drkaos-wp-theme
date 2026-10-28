@@ -127,6 +127,10 @@
 		if (document.body.classList.contains('block-editor-page')) { return; }
 		fullPass();
 		window.addEventListener('load', function () { queue(document.body); });
+		// Schede e pannelli mostrati da script (es. UpdraftPlus) non cambiano classi: si ricontrolla dopo un clic.
+		var recheck = function () { queue(document.body); };
+		document.addEventListener('click', recheck, true);
+		document.addEventListener('change', recheck, true);
 		if (window.MutationObserver) {
 			new MutationObserver(function (records) {
 				records.forEach(function (r) {

@@ -17,6 +17,11 @@ Nessun stile imposto, nessuna dipendenza. Supporta le Theme Locations di Element
 3. Installa Elementor e costruisci header, footer e pagine.
 
 == Changelog ==
+= 2.0.3 =
+* Corretti i selettori dei pulsanti primari: ora il testo è sempre bianco in grassetto (prima non si applicavano).
+* Il controllo dei contrasti ricontrolla la pagina dopo un clic, così legge anche schede e pannelli mostrati da script (es. UpdraftPlus).
+* Modulo di caricamento di temi e plugin con pannello scuro e pulsante "Scegli file" leggibile.
+
 = 2.0.2 =
 * Avviso nella Bacheca quando l'indirizzo di accesso personalizzato non può attivarsi perché i permalink sono su "Semplice".
 
