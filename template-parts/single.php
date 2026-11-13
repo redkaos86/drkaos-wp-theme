@@ -13,6 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<article id="post-<?php the_ID(); ?>" <?php post_class( 'site-single' ); ?>>
 		<header class="page-header">
 			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+			<?php echo drkaos_cpt_subtitle( get_the_ID() ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 		</header>
 
 		<?php if ( has_post_thumbnail() ) : ?>
@@ -30,6 +31,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			);
 			?>
 		</div>
+
+		<?php echo drkaos_cpt_details( get_the_ID() ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 
 		<footer class="entry-footer">
 			<?php

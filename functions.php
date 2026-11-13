@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'DRKAOS_THEME_VERSION', '2.0.3' );
+define( 'DRKAOS_THEME_VERSION', '2.1.0' );
 define( 'DRKAOS_THEME_DIR', get_template_directory() );
 define( 'DRKAOS_THEME_URL', get_template_directory_uri() );
 
@@ -48,6 +48,7 @@ require_once DRKAOS_THEME_DIR . '/inc/promo-kaosslider.php';
 require_once DRKAOS_THEME_DIR . '/inc/cursor.php';
 require_once DRKAOS_THEME_DIR . '/inc/maintenance.php';
 require_once DRKAOS_THEME_DIR . '/inc/login-url.php';
+require_once DRKAOS_THEME_DIR . '/inc/post-types.php';
 
 /**
  * Setup del tema.

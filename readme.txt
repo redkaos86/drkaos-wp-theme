@@ -17,6 +17,9 @@ Nessun stile imposto, nessuna dipendenza. Supporta le Theme Locations di Element
 3. Installa Elementor e costruisci header, footer e pagine.
 
 == Changelog ==
+= 2.1.0 =
+* Nuove voci Portfolio (progetti, con settori) e Servizi: i lavori e i servizi si inseriscono a parte e si mostrano dove serve, per tenere pulite le pagine. Se il sito ha già gli stessi tipi (progetto, servizio) non vengono toccati.
+
 = 2.0.3 =
 * Corretti i selettori dei pulsanti primari: ora il testo è sempre bianco in grassetto (prima non si applicavano).
 * Il controllo dei contrasti ricontrolla la pagina dopo un clic, così legge anche schede e pannelli mostrati da script (es. UpdraftPlus).

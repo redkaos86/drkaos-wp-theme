@@ -96,3 +96,12 @@ a:hover { filter: brightness(.85); }
 .search-field { width: 100%; }
 .comment-list { list-style: none; padding: 0; }
 .comment-list .children { list-style: none; }
+
+/* Portfolio e Servizi: archivio a griglia e dettagli */
+body.post-type-archive-progetto .page-content,
+body.post-type-archive-servizio .page-content,
+body.tax-settore .page-content { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+.drkaos-details { display: grid; grid-template-columns: max-content 1fr; gap: 6px 18px; margin-block: 1.5rem; }
+.drkaos-details dt { font-weight: 600; }
+.drkaos-details dd { margin: 0; }
+.entry-subtitle { margin-block: -.4rem 1rem; opacity: .75; }
