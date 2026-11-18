@@ -292,13 +292,31 @@ function drkaos_register_post_types() {
 add_action( 'init', 'drkaos_register_post_types', 11 );
 
 /**
- * Su un sito nuovo, Elementor propone di default anche questi tipi (si può togliere da Elementor → Impostazioni).
+ * Portfolio e Servizi si modificano con Elementor, sia che li registri il tema sia che esistano già
+ * (tema figlio, plugin). Elementor controlla solo post_type_supports( tipo, 'elementor' ): lo si
+ * aggiunge qui, quindi vale anche se nelle impostazioni di Elementor c'è già una lista salvata.
+ * Disattivazione: add_filter( 'drkaos_elementor_for_cpt', '__return_false' );
+ */
+function drkaos_enable_elementor_support() {
+	if ( ! apply_filters( 'drkaos_elementor_for_cpt', true ) ) {
+		return;
+	}
+	foreach ( array_keys( drkaos_cpt_config() ) as $key ) {
+		if ( post_type_exists( $key ) ) {
+			add_post_type_support( $key, 'elementor' );
+		}
+	}
+}
+add_action( 'init', 'drkaos_enable_elementor_support', 12 );
+
+/**
+ * Nelle impostazioni di Elementor i due tipi risultano spuntati di default (su un sito dove non c'è ancora una lista salvata).
  *
  * @param mixed $default Valore predefinito.
  * @return array
  */
 function drkaos_elementor_cpt_default( $default ) {
-	return array_values( array_unique( array_merge( (array) $default, drkaos_own_cpts() ) ) );
+	return array_values( array_unique( array_merge( (array) $default, array_keys( drkaos_cpt_config() ) ) ) );
 }
 add_filter( 'default_option_elementor_cpt_support', 'drkaos_elementor_cpt_default' );
 

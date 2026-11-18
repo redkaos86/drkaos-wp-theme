@@ -17,6 +17,10 @@ Nessun stile imposto, nessuna dipendenza. Supporta le Theme Locations di Element
 3. Installa Elementor e costruisci header, footer e pagine.
 
 == Changelog ==
+= 2.2.0 =
+* Portfolio e Servizi si modificano con Elementor (anche sui siti dove i due tipi esistono già e dove Elementor ha già una lista di tipi salvata).
+* Se un progetto, servizio, articolo o pagina è costruito con Elementor, il tema non stampa il proprio titolo, immagine e dettagli.
+
 = 2.1.0 =
 * Nuove voci Portfolio (progetti, con settori) e Servizi: i lavori e i servizi si inseriscono a parte e si mostrano dove serve, per tenere pulite le pagine. Se il sito ha già gli stessi tipi (progetto, servizio) non vengono toccati.
 

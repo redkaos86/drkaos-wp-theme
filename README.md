@@ -45,9 +45,11 @@ define( 'DRKAOS_DISABLE_MAINTENANCE', true );       // disattiva la modalità ma
 define( 'DRKAOS_DISABLE_ADMIN_STYLE', true );       // dashboard standard di WordPress
 ```
 
+Elementor: Portfolio e Servizi hanno sempre il supporto a Elementor (anche se esistono già); per toglierlo, `add_filter( 'drkaos_elementor_for_cpt', '__return_false' );`.
+
 Tipi di contenuto: `progetto` (Portfolio, tassonomia `settore`) e `servizio` (Servizi). Se il sito li ha già, il tema non li registra; l'archivio `/portfolio/` o `/servizi/` si spegne da solo se esiste già una pagina con lo stesso indirizzo.
 
-Filtri disponibili: `drkaos_register_progetto`, `drkaos_register_servizio`, `drkaos_cursor_enabled`, `drkaos_login_url_enabled`, `drkaos_login_math`, `drkaos_maintenance_block`, `drkaos_admin_style`, `drkaos_admin_contrast_fix`, `drkaos_promo_kaosslider`, `drkaos_kaosslider_url`, `drkaos_logo_url`, `drkaos_enable_header`, `drkaos_enable_footer`.
+Filtri disponibili: `drkaos_elementor_for_cpt`, `drkaos_register_progetto`, `drkaos_register_servizio`, `drkaos_cursor_enabled`, `drkaos_login_url_enabled`, `drkaos_login_math`, `drkaos_maintenance_block`, `drkaos_admin_style`, `drkaos_admin_contrast_fix`, `drkaos_promo_kaosslider`, `drkaos_kaosslider_url`, `drkaos_logo_url`, `drkaos_enable_header`, `drkaos_enable_footer`.
 
 ## Sicurezza
 

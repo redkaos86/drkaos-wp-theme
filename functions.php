@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'DRKAOS_THEME_VERSION', '2.1.0' );
+define( 'DRKAOS_THEME_VERSION', '2.2.0' );
 define( 'DRKAOS_THEME_DIR', get_template_directory() );
 define( 'DRKAOS_THEME_URL', get_template_directory_uri() );
 
@@ -180,18 +180,33 @@ function drkaos_body_class( $classes ) {
 add_filter( 'body_class', 'drkaos_body_class' );
 
 /**
- * Nasconde il titolo di pagina del tema quando la pagina è costruita con Elementor
- * (il titolo, se serve, si gestisce direttamente in Elementor).
+ * Il contenuto è costruito con Elementor?
+ *
+ * @param int $post_id ID del contenuto (0 = quello corrente).
+ * @return bool
+ */
+function drkaos_is_elementor_built( $post_id = 0 ) {
+	if ( ! class_exists( '\Elementor\Plugin' ) ) {
+		return false;
+	}
+	$post_id = $post_id ? $post_id : get_the_ID();
+	if ( ! $post_id ) {
+		return false;
+	}
+	$doc = \Elementor\Plugin::$instance->documents->get( $post_id );
+	return $doc && $doc->is_built_with_elementor();
+}
+
+/**
+ * Nasconde il titolo del tema quando la pagina, l'articolo, il progetto o il servizio
+ * è costruito con Elementor (il titolo, se serve, si gestisce in Elementor).
  *
  * @param bool $show Mostra il titolo.
  * @return bool
  */
 function drkaos_show_page_title( $show ) {
-	if ( is_page() && class_exists( '\Elementor\Plugin' ) ) {
-		$doc = \Elementor\Plugin::$instance->documents->get( get_the_ID() );
-		if ( $doc && $doc->is_built_with_elementor() ) {
-			return false;
-		}
+	if ( is_singular() && drkaos_is_elementor_built() ) {
+		return false;
 	}
 	return $show;
 }
